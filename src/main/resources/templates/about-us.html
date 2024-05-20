@@ -1,0 +1,103 @@
+<!-- <!doctype html>
+<html lang="en">
+
+
+<head th:fragment="head">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Fitness Centre</title>
+ 
+    <link rel="stylesheet" th:href="@{/css/style1.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+
+  <body>
+    <nav>
+      <div class="navbar">
+        <div class="logo"><a href="/">FitnessCentre</a></div>
+        <ul class="menu">
+            <li class="nav-item active" th:each="page: ${cpages}" th:if="${page.slug != 'home'}">
+                <a th:href="@{'/' + ${page.slug}}" th:text="${page.title}"></a>
+            </li>
+
+        </ul>
+      </div>
+    </nav>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.css}">
+    <link rel="stylesheet" th:href="@{/css/style1.css}">
+    <title>About Us</title>
+<!--
+
+TemplateMo 548 Training Studio
+
+https://templatemo.com/tm-548-training-studio
+
+-->
+    <!-- Additional CSS Files -->
+</head>
+<body>
+     <!-- ** Header Area Start ** -->
+     <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ** Logo Start ** -->
+                        <a href="/" class="logo">Fitness<em> Hub</em></a>
+                        <!-- ** Logo End ** -->
+                        <!-- ** Menu Start ** -->
+                        <ul class="nav">
+                          <li class="nav-item active" th:each="page: ${cpages}" th:if="${page.slug != 'home'}">
+                            <a th:href="@{'/' + ${page.slug}}" th:text="${page.title}"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/cart/view">Cart</a>
+                        </li>
+                            <li class="main-button"><a th:href="@{/login}">LogIn</a></li>
+                        </ul>        
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ** Menu End ** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ** Header Area End ** -->
+
+    <!-- ** Features Item Start ** -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading">
+                        <h2>About <em>Us</em></h2>
+                        <img  th:src="@{/images/line-dec.png}" alt="waves">
+                        <p>Welcome to our fitness haven, where sweat meets determination and dreams transform into achievements. At our cutting-edge center, we redefine fitness, blending expert guidance with an electrifying atmosphere. We're not just a gym; we're your fitness family, dedicated to sculpting stronger bodies and fostering unbreakable spirits.We have the best Gym Trainers.With their expertise, reach new heights, sculpt your passion, and achieve greatness. Join us for a fitness experience tailored for enthusiasts, where every goal is within reach. Join us and unleash your potential!</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <!-- ** Features Item End ** -->
+
+</body>
+</html>

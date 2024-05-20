@@ -1,0 +1,135 @@
+<!-- !doctype html>
+<html lang="en">
+
+<head th:replace="/fragments/head"></head>
+
+<body>
+
+    <nav th:replace="/fragments/nav :: nav-front"></nav>
+
+    <div class="container-fluid mt-5">
+        <div class="row">
+            <div th:replace="/fragments/categories"></div>
+            <div class="col"></div>
+            <div class="col-6 text-center">
+
+                <h3 class="display-4">Login</h3>
+
+                <div class="alert alert-danger" th:if="${param.error}">
+                    Invalid credentials
+                </div>
+
+                <form method="post" th:action="@{/login}">
+                
+                    <div class="form-group">
+                        <label for="">Username:</label>
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Password:</label>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                    </div>
+
+                    <button class="btn btn-danger mb-5">Login</button>
+
+                    <p>
+                        Click <a th:href="@{/register}">here</a> to register.
+                    </p>
+        
+                </form>
+
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+
+    <div th:replace="/fragments/footer"></div>
+
+</body>
+
+</html> -->
+<!doctype html>
+<html lang="en">
+
+
+  <head th:fragment="head">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.css}">
+    <link rel="stylesheet" th:href="@{/css/style1.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/style-login.css}">
+    <title>Fitness Hub</title>
+</head>
+
+<body>
+
+    <nav th:replace="/fragments/nav :: nav-front"></nav>
+
+    <section class="h-100 gradient-form" style="background-color: #eee;">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-10">
+              <div class="card rounded-3 text-black">
+                <div class="row g-0">
+                  <div class="col-lg-6">
+                    <div class="card-body p-md-5 mx-md-4">
+      
+                      <div class="text-center">
+                        
+                        <h4 class="mt-1 mb-5 pb-1">We are Fitness Freaks</h4>
+                      </div>
+                      <div class="alert alert-danger" th:if="${param.error}">
+                        Invalid credentials
+                    </div>
+      
+                      <form method="post" th:action="@{/login}">
+                        <p>Please login to your account</p>
+      
+                        <div class="form-outline mb-4">
+                          <input type="text" id="username" name="username" class="form-control"
+                            placeholder="Username" />
+                          <!-- <label class="form-label" for="form2Example11">Username</label> -->
+                        </div>
+      
+                        <div class="form-outline mb-4">
+                          <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
+                          <!-- <label class="form-label" for="form2Example22">Password</label> -->
+                        </div>
+      
+                        <button class="btn btn-danger mb-5">Login</button>
+      
+                        <div class="d-flex align-items-center justify-content-center pb-4">
+                            <p class="mb-0 me-2">Don't have an account?</p>
+                            <button type="button" class="btn btn-outline-danger"><a class="text-muted" th:href="@{/register}">Sign Up</a></button>
+                          </div>
+                        
+      
+                      </form>
+      
+                    </div>
+                  </div>
+                  <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                    <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                      <h4 class="mb-4">We are more than just a company</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    <div th:replace="/fragments/footer"></div>
+
+</body>
+
+</html>

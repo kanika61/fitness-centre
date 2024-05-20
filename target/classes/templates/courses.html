@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+    
+        <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.css}">
+        <link rel="stylesheet" th:href="@{/css/style1.css}">
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <link rel="stylesheet" th:href="@{/css/side-bar.css}">
+
+        <title>Fitness Hub</title>
+    </head>
+
+<body>
+   
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ** Logo Start ** -->
+                        <a href="/" class="logo">Fitness<em> Hub</em></a>
+                        <!-- ** Logo End ** -->
+                        <!-- ** Menu Start ** -->
+                        <ul class="nav">
+                          <li class="nav-item active" th:each="page: ${cpages}" th:if="${page.slug != 'home'}">
+                            <a th:href="@{'/' + ${page.slug}}" th:text="${page.title}"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/cart/view">Cart</a>
+                        </li>
+                        <li th:if="${principal == null}" class="main-button"><a th:href="@{/login}">LogIn</a></li>
+                        <form th:if="${principal != null}" th:action="@{/logout}" method="post">
+                            <!-- <span class="text-white" th:text="${'Hi, ' + principal}"></span> -->
+                            <button class="main-button">Logout</button>
+                          </form> 
+                        </ul>        
+                          
+                        <!-- ** Menu End ** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div th:replace="/fragments/categories"></div>
+    <section class="section" id="trainers">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading">
+                        <h2>All <em>Courses</em></h2>
+                        <img src="images/images/line-dec.png" alt="">
+                        <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor, ultricies fermentum massa consequat eu.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Begin trainers loop -->
+                <div th:each="course: ${courses}" class="col-lg-4">
+                    <div class="trainer-item">
+                        <div class="image-thumb">
+                            <img th:src="@{'/media/' + ${course.image}}" alt="">
+                        </div>
+                        <div class="down-content">
+                            <span th:text="'Rs.' + ${course.price}">Strength Trainer</span>
+                            <h4 th:text="${course.name}">Bret D. Bowers</h4>
+                            <p th:utext="${course.description}">Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
+                            <div style="position: relative;">
+                                <p>
+                                    <a class="btn btn-primary addToCart" 
+                                        th:attr="data-id=${course.id}" 
+                                        th:href="@{'/cart/add/' + ${course.id}}">Add to cart</a>
+                                    <img class="ajaxLoader d-none" src="/images/ajax-loader.gif">
+                                </p>
+                                <div class="btn btn-sm btn-success hide courseAdded">Course added!</div>
+                            </div>
+                            <!-- <ul class="social-icons">
+                                <li><a href="#" th:href="@{${trainer.social.facebook}}"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" th:href="@{${trainer.social.twitter}}"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" th:href="@{${trainer.social.linkedin}}"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#" th:href="@{${trainer.social.behance}}"><i class="fa fa-behance"></i></a></li>
+                            </ul> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- End trainers loop -->
+            </div>
+    
+                <!-- <div class="col-lg-4" >
+                    <div class="trainer-item">
+                        <div class="image-thumb">
+                            <img src="images/images/second-trainer.jpg" alt="">
+                        </div>
+                        <div class="down-content">
+                            <span>Muscle Trainer</span>
+                            <h4>Hector T. Daigl</h4>
+                            <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
+                            <ul class="social-icons">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="trainer-item">
+                        <div class="image-thumb">
+                            <img src="images/images/third-trainer.jpg" alt="">
+                        </div>
+                        <div class="down-content">
+                            <span>Power Trainer</span>
+                            <h4>Paul D. Newman</h4>
+                            <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
+                            <ul class="social-icons">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                            </ul>
+                        </div>
+                    </div> -->
+                <!-- </div> -->
+            
+        </div>
+    </section>
+    <!-- <div class="row">
+        <div class="col-4" th:each="course: ${courses}">
+            <p>
+                <img style="width:200px;" th:src="@{'/media/' + ${course.image}}">
+            </p>
+            <h4 th:text="${course.name}"></h4>
+            <div class="desc" th:utext="${course.description}"></div>
+            <p th:text="'Rs.' + ${course.price}"></p>
+            <div style="position: relative;">
+                <p>
+                    <a class="btn btn-primary addToCart" 
+                        th:attr="data-id=${course.id}" 
+                        th:href="@{'/cart/add/' + ${course.id}}">Add to cart</a>
+                    <img class="ajaxLoader d-none" src="/images/ajax-loader.gif">
+                </p>
+                <div class="btn btn-sm btn-success hide courseAdded">Course added!</div>
+            </div>
+        </div>
+    </div> -->
+
+    <footer class="container" th:fragment = "footer">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+        <script th:src="@{/js/app.js}"></script>
+        <script src="js/jquery-2.1.0.min.js"></script>
+
+        <!-- Bootstrap -->
+        <script src="js/popper.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    
+        <!-- Plugins -->
+        <script th:src="@{/js/scrollreveal.min.js}" ></script>
+        <script th:src="@{/js/waypoints.min.js}" ></script>
+        <script th:src="@{/js/jquery.counterup.min.js}"></script>
+        <script th:src="@{/js/imgfix.min.js}" ></script> 
+        <script th:src="@{/js/mixitup.js}" ></script> 
+        <script th:src="@{/js/accordions.js}"></script>
+        
+        <!-- Global Init -->
+    </footer>
+
+    <script>
+        
+        $("a.addToCart").click(function (e) {
+            e.preventDefault();
+
+            let $this = $(this);
+
+            $this.next().removeClass('d-none');
+
+            let id = $this.attr("data-id");
+            let url = "/cart/add/"+id;
+
+            $.get(url, {}, function (data) {
+                $('div.cart').html(data);
+            }).done(function () {
+                $this.parent().parent().find('div.courseAdded').fadeIn();
+                $this.next().addClass('d-none');
+                setTimeout(() => {
+                    $this.parent().parent().find('div.courseAdded').fadeOut();
+                }, 1000);
+            });
+        });
+
+    </script>
+    
+</body>

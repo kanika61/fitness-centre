@@ -1,0 +1,103 @@
+<!-- <header class="header-area header-sticky" th:fragment = "nav-front">
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <nav class="main-nav">
+                  <!-- * Logo Start * -->
+                  <!-- <a href="/" class="logo">Fitness<em> Hub</em></a>
+                  <!-- * Logo End * -->
+                  <!-- * Menu Start * -->
+                  <!-- <ul class="nav">
+                    <li class="nav-item active" th:each="page: ${cpages}" th:if="${page.slug != 'home'}">
+                      <a th:href="@{'/' + ${page.slug}}" th:text="${page.title}"></a>
+                    </li>
+             
+                    <li class="nav-item active">
+                        <a th:href="@{/cart}" th:text="Cart"></a>
+                    </li>
+
+
+                  </ul>
+                  <ul class="nav" th:if="${principal == null}">
+                    <li class="main-button"><a th:href="@{/login}">LogIn</a></li>
+                  </ul> 
+                  <form th:if="${principal != null}" method="post" th:action="@{/logout}">
+                    <span class="text-black" th:text="${'Hi, ' + principal}"></span>
+                    <button class="main-button">Logout</button>
+                  </form>
+                 <a></a>
+                      <span>Menu</span>
+                  </a>
+                  <!-- * Menu End * -->
+              <!-- </nav>
+          </div>
+      </div>
+  </div>
+</header> --> --> --> -->
+
+<header class="header-area header-sticky" th:fragment = "nav-front">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- * Logo Start * -->
+                    <a href="/" class="logo">Fitness<em> Hub</em></a>
+                    <!-- * Logo End * -->
+                    <!-- * Menu Start * -->
+                    <ul class="nav">
+                      <li class="nav-item active" th:each="page: ${cpages}" th:if="${page.slug != 'home'}">
+                        <a th:href="@{'/' + ${page.slug}}" th:text="${page.title}"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/cart/view">Cart</a>
+                    </li>
+                    <li th:if="${principal == null}" class="main-button"><a th:href="@{/login}">LogIn</a></li>
+                    <form th:if="${principal != null}" th:action="@{/logout}" method="post">
+                        <!-- <span class="text-white" th:text="${'Hi, ' + principal}"></span> -->
+                        <button class="main-button">Logout</button>
+                      </form> 
+
+
+                </ul>   
+  
+   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- * Menu End * -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark" th:fragment = "nav-admin">
+  <!-- opens in a new tab -->
+  <a class="navbar-brand" href="/" target="_blank">Home Page</a> 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+      aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+              <a class="nav-link" href="/admin/pages">Pages</a>
+          </li>
+          <li class="nav-item active">
+              <a class="nav-link" href="/admin/categories">Categories</a>
+          </li>
+          <li class="nav-item active">
+              <a class="nav-link" href="/admin/courses">Courses</a>
+          </li>
+          <li class="nav-item active">
+              <a class="nav-link" href="/admin/trainers">Trainers</a>
+          </li>
+          <li class="nav-item active">
+              <a class="nav-link" href="/admin/centres">Centres</a>
+          </li>
+
+      </ul>
+
+  </div>
+</nav>
